@@ -1,0 +1,32 @@
+<div>
+    <span>Productos</span>
+    <button (click)="openModal()">Agregar Producto</button>
+  </div>
+  
+  
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.marca }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>
+          <button (click)="editProducto(producto)">Editar</button>
+          <button (click)="deleteProducto(producto.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <app-modal-producto *ngIf="showModal" [producto]="selectedProducto" (closed)="closeModal($event)"></app-modal-producto>
+  
