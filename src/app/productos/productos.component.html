@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>Imagen</th>
         <th>Nombre</th>
         <th>Marca</th>
         <th>Precio</th>
@@ -17,6 +18,7 @@
     <tbody>
       <tr *ngFor="let producto of productos">
         <td>{{ producto.id }}</td>
+        <td>{{ producto.imagen }}</td>
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.marca }}</td>
         <td>{{ producto.precio }}</td>

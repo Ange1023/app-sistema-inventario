@@ -31,9 +31,9 @@ export class ProductoService {
 
   updateProducto(updatedProducto: Producto): void {
     const productos = this.getProductos();
-    const index = productos.findIndex(p => p.id === updatedProducto.id);
-    if (index !== -1) {
-      productos[index] = updatedProducto;
+    const i = productos.findIndex(p => p.id === updatedProducto.id);
+    if (i !== -1) {
+      productos[i] = updatedProducto;
       localStorage.setItem(this.productosKey, JSON.stringify(productos));
     }
   }

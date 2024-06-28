@@ -1,0 +1,29 @@
+<h1>Sedes</h1>
+<button (click)="openModal()">Agregar Sede</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Ubicación</th>
+      <th>Contacto</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sede of sedes">
+      <td>{{ sede.id }}</td>
+      <td>{{ sede.nombre }}</td>
+      <td>{{ sede.ubicacion }}</td>
+      <td>{{ sede.contacto }}</td>
+      <td>
+        <button (click)="editSede(sede)">Editar</button>
+        <button (click)="deleteSede(sede.id)">Eliminar</button>
+        <button routerLink="/inventario">Ver Inventario</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-modal-sede *ngIf="showModal" [sede]="selectedSede" (close)="closeModal($event)"></app-modal-sede>

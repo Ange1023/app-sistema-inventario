@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ModalProductoComponent } from './modal-producto/modal-producto.component';
 import { ProductoService } from './services/producto.service';
+import { SedesComponent } from './sedes/sedes.component';
+import { ModalSedeComponent } from './modal-sede/modal-sede.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductosComponent,
-    ModalProductoComponent
+    ModalProductoComponent,
+    SedesComponent,
+    ModalSedeComponent
   ],
   imports: [
     BrowserModule,
