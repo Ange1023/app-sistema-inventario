@@ -23,11 +23,11 @@ export class ProductoService {
     return productos ? JSON.parse(productos) : [];
   }
 
-  getProductIdByName(name: any){
-    const productos = this.getProductos();
-    const productoId = productos.find(i => i.nombre === name)?.id;
-    return productoId;
-  }
+  // getProductIdByName(name: any){
+  //   const productos = this.getProductos();
+  //   const productoId = productos.find(i => i.nombre === name)?.id;
+  //   return productoId;
+  // }
 
   addProducto(producto: Producto): void {
     const productos = this.getProductos();

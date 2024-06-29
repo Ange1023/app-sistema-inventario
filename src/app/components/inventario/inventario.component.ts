@@ -50,7 +50,12 @@ export class InventarioComponent implements OnInit {
   }
 
   getProductName(productoId: number): string {
-    const producto = this.productoService.getProductos().find(p => p.id === productoId);
-    return producto ? producto.nombre : 'Producto no encontrado';
+    const productos = this.productoService.getProductos()
+    const productoEnc = productos.find(p => p.id === productoId);
+    console.log(this.productoService.getProductos())
+    console.log(productos)
+    console.log(productoId)
+    return productoEnc ? productoEnc.nombre : 'Producto no encontrado';
+    
   }
 }

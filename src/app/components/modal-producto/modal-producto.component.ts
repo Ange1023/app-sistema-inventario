@@ -28,7 +28,7 @@ export class ModalProductoComponent implements OnChanges {
     } else {
       this.showModal = true;
       this.form = {
-        id: Math.floor(Math.random() * 10000),
+        id: this.productoService.getProductos().length,
         nombre: '',
         marca: '',
         proveedor: '',
