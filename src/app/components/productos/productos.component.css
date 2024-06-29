@@ -31,8 +31,25 @@ table {
     margin-right: 5px;
     cursor: pointer;
   }
-  div{
-    display: flex;
-    
-  }
   
+  div{
+      display: flex;
+      flex-wrap: wrap;
+      width: 90vw;
+      justify-content: center;
+      align-content: center;
+  }
+    
+  
+  .contenedor{
+    display: grid;
+    width: 90vw;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .boton{
+    display: flex;
+  }
+  #agregar{
+    margin-left: auto;
+  }

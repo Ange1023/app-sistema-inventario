@@ -34,10 +34,9 @@ table {
   div{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90vw;
     justify-content: center;
     align-content: center;
-    
   }
 
   .addSede{
@@ -46,4 +45,16 @@ table {
     color: #fff;
     border: none;
     border-radius: 4px;
+  }
+  .contenedor{
+    display: grid;
+    width: 90vw;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .boton{
+    display: flex;
+  }
+  #agregar{
+    margin-left: auto;
   }

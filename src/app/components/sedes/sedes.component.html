@@ -1,5 +1,9 @@
-<h1>Sedes</h1>
-<button (click)="openModal()">Agregar Sede</button>
+<div class="contenedor">
+  <div>
+    <h2 class="boton">Sedes</h2>
+  <button (click)="openModal()" id="agregar">Agregar Sede</button>
+  </div>
+  
 
 <table>
   <thead>
@@ -18,12 +22,12 @@
       <td>{{ sede.ubicacion }}</td>
       <td>{{ sede.contacto }}</td>
       <td>
-        <button (click)="editSede(sede)">Editar</button>
-        <button (click)="deleteSede(sede.id)">Eliminar</button>
+        <button (click)="editSede(sede)" class="editar">Editar</button>
+        <button (click)="deleteSede(sede.id)" class="eliminar">Eliminar</button>
         <button (click)="verInventario(sede.id)">Ver Inventario</button>
       </td>
     </tr>
   </tbody>
 </table>
-
+</div>
 <app-modal-sede *ngIf="showModal" [sede]="selectedSede" (close)="closeModal($event)"></app-modal-sede>

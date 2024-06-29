@@ -1,5 +1,11 @@
-<h1>Inventario de Sede</h1>
-<button (click)="openModal()">Agregar Registro</button>
+<div class="contenedor">
+
+
+<div class="boton">
+  <h2>Inventario de Sede</h2>
+  <button (click)="openModal()" id="agregar">Agregar Registro</button>
+</div>
+
 
 <table>
   <thead>
@@ -16,11 +22,11 @@
       <td>{{ item.stock }}</td>
       <td>{{ item.reorderPoint }}</td>
       <td>
-        <button (click)="editInventario(item)">Editar</button>
-        <button (click)="deleteInventario(item.id)">Eliminar</button>
+        <button (click)="editInventario(item)" class = "editar">Editar</button>
+        <button (click)="deleteInventario(item.id)" class="eliminar">Eliminar</button>
       </td>
     </tr>
   </tbody>
 </table>
-
+</div>
 <app-modal-inventario *ngIf="showModal" [inventarioItem]="selectedInventarioItem" [sedeId]="sedeId" (closed)="closeModal($event)"></app-modal-inventario>
