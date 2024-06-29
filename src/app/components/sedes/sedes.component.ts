@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SedeService } from '../services/sede.service';
+import { SedeService } from '../../services/sede.service';
 import { Router } from '@angular/router';
 
 interface Sede {
@@ -47,7 +47,7 @@ export class SedesComponent implements OnInit {
     this.sedes = this.sedeService.getSedes();
   }
 
-  viewInventario(sedeId: number) {
+  verInventario(sedeId: number) {
     this.router.navigate(['/inventario'], { queryParams: { sedeId } });
   }
 }

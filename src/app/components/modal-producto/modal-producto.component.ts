@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { ProductoService } from '../services/producto.service';
+import { ProductoService } from '../../services/producto.service';
 
 @Component({
   selector: 'app-modal-producto',

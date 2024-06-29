@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { SedeService } from '../services/sede.service';
-import { Sede } from '../services/sede.service';
+import { SedeService } from '../../services/sede.service';
+import { Sede } from '../../services/sede.service';
 
 
 @Component({

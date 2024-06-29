@@ -1,0 +1,18 @@
+<div *ngIf="showModal">
+    <div class="modal">
+      <h2>{{ inventarioItem ? 'Editar' : 'Agregar' }} Inventario</h2>
+      <form (submit)="submitForm()">
+        <label for="productoId">Producto:</label>
+        <select id="productoId" [(ngModel)]="form.productoId" name="productoId" required>
+          <option *ngFor="let producto of productos" [value]="producto.id">{{ producto.nombre }}</option>
+        </select>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" [(ngModel)]="form.stock" name="stock" required>
+        <label for="rop">ROP:</label>
+        <input type="number" id="rop" [(ngModel)]="form.reorderPoint" name="rop" required>
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="close()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  
