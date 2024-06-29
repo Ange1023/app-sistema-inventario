@@ -1,30 +1,26 @@
-<div class="contenedor">
-  <div class="boton">
-      <h1>Inventario de Sede</h1>
-      <button (click)="openModal()" id="agregar">Agregar Registro</button>
-  </div>
+<h1>Inventario de Sede</h1>
+<button (click)="openModal()">Agregar Registro</button>
 
+<table>
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Stock</th>
+      <th>ROP</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of inventario" [class.reorder]="item.stock < item.reorderPoint">
+      <td>{{ getProductName(item.productoId) }}</td>
+      <td>{{ item.stock }}</td>
+      <td>{{ item.reorderPoint }}</td>
+      <td>
+        <button (click)="editInventario(item)">Editar</button>
+        <button (click)="deleteInventario(item.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Stock</th>
-        <th>ROP</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of inventario" [class.reorder]="item.stock < item.reorderPoint">
-        <td>{{ getProductName(item.productoId) }}</td>
-        <td>{{ item.stock }}</td>
-        <td>{{ item.reorderPoint }}</td>
-        <td>
-          <button (click)="editInventario(item)">Editar</button>
-          <button (click)="deleteInventario(item.id)">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 <app-modal-inventario *ngIf="showModal" [inventarioItem]="selectedInventarioItem" [sedeId]="sedeId" (closed)="closeModal($event)"></app-modal-inventario>

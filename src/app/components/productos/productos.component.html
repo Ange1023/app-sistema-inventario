@@ -2,7 +2,8 @@
     <h2>Productos</h2>
     <button class="adProduct" (click)="openModal()">Agregar Producto</button>
   </div>
-
+  
+  
   <table>
     <thead>
       <tr>
@@ -32,6 +33,6 @@
       </tr>
     </tbody>
   </table>
-  </div>
+  
   <app-modal-producto *ngIf="showModal" [producto]="selectedProducto" (closed)="closeModal($event)"></app-modal-producto>
   

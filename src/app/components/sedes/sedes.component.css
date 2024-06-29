@@ -31,13 +31,7 @@ table {
     margin-right: 5px;
     cursor: pointer;
   }
-  .contenedor{
-    display: grid;
-    width: 80vw;
-    margin: auto;
-    margin-top: 20px;
-  }
-  .boton{
+  div{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
