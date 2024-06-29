@@ -39,7 +39,17 @@ table {
   }
   .boton{
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    
   }
-  #agregar{
-    margin-left: auto;
+
+  .addSede{
+    cursor: pointer;
+    background-color: #1aaf06;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
   }

@@ -9,3 +9,21 @@
 body{
     height: 100vh;
 }
+
+button{
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.eliminar{
+    color:white;
+    background-color: red;
+}
+
+.editar{
+
+    background-color: #d4ddfa;
+    color: black;
+
+}
