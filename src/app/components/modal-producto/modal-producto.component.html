@@ -12,6 +12,7 @@
         <input type="number" id="precio" [(ngModel)]="form.precio" name="precio" required>
         <label for="categoria">Categoría:</label>
         <input type="text" id="categoria" [(ngModel)]="form.categoria" name="categoria" required>
+        <input type="file" id="imagen" (change)="onFileChange($event)">
         <button type="submit">Guardar</button>
         <button type="button" (click)="onClose()">Cancelar</button>
       </form>
