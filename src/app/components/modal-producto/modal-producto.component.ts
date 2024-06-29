@@ -37,7 +37,16 @@ export class ModalProductoComponent implements OnChanges {
       };
     }
   }
-
+  onFileChange(event: any) {
+    const reader = new FileReader();
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.form.imagen = reader.result as string;
+      };
+    }
+  }
   submitForm() {
     if (this.producto) {
       this.productoService.updateProducto(this.form);
