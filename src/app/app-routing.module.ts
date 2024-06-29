@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductosComponent } from './components/productos/productos.component';
 import { SedesComponent } from './components/sedes/sedes.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
+  {path: '', component: LoginComponent },
   { path: 'productos', component: ProductosComponent },
   { path: 'sedes', component: SedesComponent },
   { path: 'inventario', component: InventarioComponent },
