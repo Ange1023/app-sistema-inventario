@@ -50,4 +50,6 @@ table {
 #agregar{
   margin-left: auto;
 }
-  
+.stock {
+  color: red;
+}

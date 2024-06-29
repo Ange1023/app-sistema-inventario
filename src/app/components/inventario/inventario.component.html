@@ -10,6 +10,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Producto</th>
       <th>Stock</th>
       <th>ROP</th>
@@ -18,8 +19,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of inventario" [class.reorder]="item.stock < item.reorderPoint">
+      <td>{{ item.id }}</td>
       <td>{{ getProductName(item.productoId) }}</td>
-      <td>{{ item.stock }}</td>
+      <td [ngClass]="{'stock': item.stock < item.reorderPoint}">{{ item.stock }}</td>
       <td>{{ item.reorderPoint }}</td>
       <td>
         <button (click)="editInventario(item)" class = "editar">Editar</button>
