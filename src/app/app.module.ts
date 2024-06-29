@@ -13,6 +13,8 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { ModalInventarioComponent } from './components/modal-inventario/modal-inventario.component';
 import { InventarioService } from './services/inventario.service';
 import { SedeService } from './services/sede.service';
+import { LoginComponent } from './components/login/login.component';
+import { SearchFormComponent } from './components/search-form/search-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { SedeService } from './services/sede.service';
     SedesComponent,
     ModalSedeComponent,
     InventarioComponent,
-    ModalInventarioComponent
+    ModalInventarioComponent,
+    LoginComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,

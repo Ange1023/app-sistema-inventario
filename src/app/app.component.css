@@ -28,3 +28,10 @@ nav {
     border-radius: 5px; 
     font-size: 20px;
   }
+
+  .loginWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
