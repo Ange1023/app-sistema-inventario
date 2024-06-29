@@ -7,11 +7,12 @@
   <table>
     <thead>
       <tr>
-        <th>ID</th>
+        <th>Id</th>
         <th>Imagen</th>
         <th>Nombre</th>
         <th>Marca</th>
         <th>Precio</th>
+        <th>categoria</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -22,6 +23,7 @@
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.marca }}</td>
         <td>{{ producto.precio }}</td>
+        <td>{{ producto.categoria }}</td>
         <td>
           <button (click)="editProducto(producto)">Editar</button>
           <button (click)="deleteProducto(producto.id)">Eliminar</button>
