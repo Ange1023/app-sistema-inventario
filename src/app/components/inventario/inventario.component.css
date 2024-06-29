@@ -25,14 +25,30 @@ table {
   tr:hover {
     background-color: #ddd;
   }
-  
-  button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
+
+  button{
+    height: 43px;
+    margin: 9px;
+    width: 90px
   }
+  
   div{
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
     
+  }
+
+  .redStock{
+    color: red
+  }
+
+  .addInv{
+
+    background-color: #1aaf06;
+    color: white;
+
   }
   

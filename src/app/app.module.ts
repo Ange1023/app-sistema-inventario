@@ -15,6 +15,7 @@ import { InventarioService } from './services/inventario.service';
 import { SedeService } from './services/sede.service';
 
 import { SearchFormComponent } from './components/search-form/search-form.component';
+import { RickrollComponent } from './components/rickroll/rickroll.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
     InventarioComponent,
     ModalInventarioComponent,
     SearchFormComponent,
+    RickrollComponent,
   ],
   imports: [
     BrowserModule,

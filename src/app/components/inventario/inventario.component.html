@@ -1,5 +1,8 @@
-<h1>Inventario de Sede</h1>
-<button (click)="openModal()">Agregar Registro</button>
+
+<div>
+  <h1>Inventario de Sede</h1>
+<button class="addInv" (click)="openModal()">Agregar Registro</button>
+</div>
 
 <table>
   <thead>
@@ -13,11 +16,11 @@
   <tbody>
     <tr *ngFor="let item of inventario" [class.reorder]="item.stock < item.reorderPoint">
       <td>{{ getProductName(item.productoId) }}</td>
-      <td>{{ item.stock }}</td>
+      <td [ngClass]="{'redStock': item.stock <= item.reorderPoint}">{{ item.stock }}</td>
       <td>{{ item.reorderPoint }}</td>
       <td>
-        <button (click)="editInventario(item)">Editar</button>
-        <button (click)="deleteInventario(item.id)">Eliminar</button>
+        <button class='editar'(click)="editInventario(item)">Editar</button>
+        <button class='eliminar' (click)="deleteInventario(item.id)">Eliminar</button>
       </td>
     </tr>
   </tbody>

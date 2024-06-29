@@ -1,5 +1,8 @@
-<h1>Sedes</h1>
-<button (click)="openModal()">Agregar Sede</button>
+
+<div>
+  <h1>Sedes</h1>
+<button class="addSede" (click)="openModal()">Agregar Sede</button>
+</div>
 
 <table>
   <thead>
@@ -18,9 +21,9 @@
       <td>{{ sede.ubicacion }}</td>
       <td>{{ sede.contacto }}</td>
       <td>
-        <button (click)="editSede(sede)">Editar</button>
-        <button (click)="deleteSede(sede.id)">Eliminar</button>
-        <button (click)="verInventario(sede.id)">Ver Inventario</button>
+        <button class="editar"(click)="editSede(sede)">Editar</button>
+        <button class="eliminar" (click)="deleteSede(sede.id)">Eliminar</button>
+        <button class="inv" (click)="verInventario(sede.id)">Ver Inventario</button>
       </td>
     </tr>
   </tbody>
