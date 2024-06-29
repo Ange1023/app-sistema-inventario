@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,9 +13,8 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { ModalInventarioComponent } from './components/modal-inventario/modal-inventario.component';
 import { InventarioService } from './services/inventario.service';
 import { SedeService } from './services/sede.service';
-import { LoginComponent } from './components/login/login.component';
+
 import { SearchFormComponent } from './components/search-form/search-form.component';
-import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +25,13 @@ import { RegisterComponent } from './components/register/register.component';
     ModalSedeComponent,
     InventarioComponent,
     ModalInventarioComponent,
-    LoginComponent,
     SearchFormComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ProductoService, InventarioService, SedeService],
   bootstrap: [AppComponent]

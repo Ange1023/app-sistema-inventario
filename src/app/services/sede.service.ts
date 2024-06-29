@@ -20,6 +20,13 @@ export class SedeService {
     return sedes ? JSON.parse(sedes) : [];
   }
 
+  getSedeIdByName(name: any){
+    const sedes = this.getSedes();
+    const sedeId = sedes.find(i => i.nombre === name)?.id;
+    return sedeId
+  }
+
+
   addSede(sede: Sede): void {
     const sedes = this.getSedes();
     sedes.push(sede);

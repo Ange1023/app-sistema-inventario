@@ -1,16 +1,15 @@
 
-
-
-
-  <ng-container *ngIf="isLoggedIn == 'true'">
     <nav>
       <span>Sistema de Inventario</span>
       <a routerLink="/productos">Productos</a>
       <a routerLink="/sedes">Sedes</a>
-      <button>Salir</button>
+      <button class="abusqueda" (click)="toggleSearchForm()">{{ mostrarSearchForm ? 'Ocultar' : 'Mostrar' }} formulario de Búsqueda</button>
     </nav>
-  </ng-container>
-  
-  <div>{{isLoggedIn}}</div>
+
+
+   
+
+<app-search-form *ngIf="mostrarSearchForm"></app-search-form>
+
 
   <router-outlet></router-outlet>

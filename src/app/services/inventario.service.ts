@@ -16,6 +16,12 @@ export class InventarioService {
 
   constructor() { }
 
+  getInventarioIdByName(name: any){
+    const inventario = this.getInventario();
+    const inventarioId = inventario.find(i => i.productoId === name);
+    return inventarioId;
+  }
+
   getInventario(): InventarioItem[] {
     const inventario = localStorage.getItem(this.inventarioKey);
     return inventario ? JSON.parse(inventario) : [];
