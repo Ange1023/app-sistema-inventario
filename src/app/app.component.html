@@ -1,16 +1,16 @@
-<!-- <nav>
-    <span>Sistema de Inventario</span>
-    <a routerLink="/productos">Productos</a>
-    <a routerLink="/sedes">Sedes</a>
-    <button>Salir</button>
-  </nav> -->
 
-  <div class="loginWrapper">
-    <app-login/>
-  </div>
 
-  <div class="loginWrapper">
-    <app-register/>
-  </div>
+
+
+  <ng-container *ngIf="isLoggedIn == 'true'">
+    <nav>
+      <span>Sistema de Inventario</span>
+      <a routerLink="/productos">Productos</a>
+      <a routerLink="/sedes">Sedes</a>
+      <button>Salir</button>
+    </nav>
+  </ng-container>
   
+  <div>{{isLoggedIn}}</div>
+
   <router-outlet></router-outlet>
