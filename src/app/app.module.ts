@@ -15,6 +15,7 @@ import { InventarioService } from './services/inventario.service';
 import { SedeService } from './services/sede.service';
 import { LoginComponent } from './components/login/login.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
     InventarioComponent,
     ModalInventarioComponent,
     LoginComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
