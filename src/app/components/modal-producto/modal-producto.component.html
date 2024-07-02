@@ -1,7 +1,7 @@
 <div *ngIf="showModal">
     <div class="modal">
       <h2>{{producto ? 'Editar' : 'Agregar'}} Producto</h2>
-      <form (submit)="submitForm()">
+      <form (submit)="submitForm($event)">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" [(ngModel)]="form.nombre" name="nombre" required>
         <label for="marca">Marca:</label>
@@ -9,10 +9,10 @@
         <label for="proveedor">Proveedor:</label>
         <input type="text" id="proveedor" [(ngModel)]="form.proveedor" name="proveedor" required>
         <label for="precio">Precio:</label>
-        <input type="number" id="precio" [(ngModel)]="form.precio" name="precio" required>
+        <input type="number" id="precio" [(ngModel)]="form.precio" name="precio" required min="0">
         <label for="categoria">Categoría:</label>
         <input type="text" id="categoria" [(ngModel)]="form.categoria" name="categoria" required>
-        <input type="file" id="imagen" (change)="onFileChange($event)">
+        <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/jpeg, image/png">
         <button type="submit">Guardar</button>
         <button type="button" (click)="onClose()">Cancelar</button>
       </form>

@@ -30,7 +30,7 @@ export class ModalSedeComponent implements OnChanges {
     } else {
       this.showModal = true;
       this.form = {
-        id: Math.floor(Math.random() * 10000),
+        id: this.sedeService.getSedes().length +1,
         nombre: '',
         ubicacion: '',
         contacto: ''
@@ -39,7 +39,8 @@ export class ModalSedeComponent implements OnChanges {
   }
 
   submitForm() {
-    if (this.form.id !== 0) { 
+    
+    if (this.form.nombre.trim() && this.form.ubicacion.trim() && this.form.contacto.trim()) {
       if (this.sede) {
         this.sedeService.updateSede(this.form);
       } else {
@@ -47,6 +48,8 @@ export class ModalSedeComponent implements OnChanges {
       }
       this.close.emit(true);
       this.showModal = false;
+    } else {
+      alert('Por favor, complete todos los campos requeridos.');
     }
   }
 

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { ProductoService } from '../../services/producto.service';
+import { ProductoService, Producto } from '../../services/producto.service';
 
 @Component({
   selector: 'app-modal-producto',
@@ -10,12 +10,12 @@ export class ModalProductoComponent implements OnChanges {
   @Input() producto: any; 
   @Output() closed = new EventEmitter<boolean>(); 
   showModal = false;
-  form: any = { 
-    id: null,
+  form: Producto = { 
+    id: 0,
     nombre: '',
     marca: '',
     proveedor: '',
-    precio: null,
+    precio: 0,
     categoria: ''
   };
 
@@ -28,11 +28,11 @@ export class ModalProductoComponent implements OnChanges {
     } else {
       this.showModal = true;
       this.form = {
-        id: this.productoService.getProductos().length,
+        id: this.productoService.getProductos().length + 1,
         nombre: '',
         marca: '',
         proveedor: '',
-        precio: null,
+        precio: 0,
         categoria: ''
       };
     }
@@ -47,14 +47,31 @@ export class ModalProductoComponent implements OnChanges {
       };
     }
   }
-  submitForm() {
-    if (this.producto) {
-      this.productoService.updateProducto(this.form);
-    } else {
-      this.productoService.addProducto(this.form);
+  
+  submitForm(event: Event) {
+    event.preventDefault();
+
+    if (this.isValidForm()) {
+      if (this.producto) {
+        this.productoService.updateProducto(this.form);
+      } else {
+        this.productoService.addProducto(this.form);
+      }
+      this.closed.emit(true); 
+      this.showModal = false;
+    } 
+  }
+
+  isValidForm(): boolean {
+    if (this.form.nombre.trim() === '' || this.form.marca.trim() === '' || this.form.proveedor.trim() === '' || this.form.precio === null || this.form.categoria.trim() === '') {
+      alert('Por favor, complete todos los campos requeridos.');
+      return false;
+    }else if (this.form.precio <= 0) {
+      alert('El precio debe ser un valor positivo.');
+      return false;
     }
-    this.closed.emit(true); 
-    this.showModal = false;
+
+    return true;
   }
 
   onClose() { 

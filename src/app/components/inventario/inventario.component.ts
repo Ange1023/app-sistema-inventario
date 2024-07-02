@@ -35,6 +35,8 @@ export class InventarioComponent implements OnInit {
   closeModal(event: boolean) {
     if (event) {
       this.inventario = this.inventarioService.getInventario().filter(i => i.sedeId === this.sedeId);
+      console.log(this.inventario);
+      
     }
     this.showModal= false;
   }
@@ -51,10 +53,10 @@ export class InventarioComponent implements OnInit {
 
   getProductName(productoId: number): string {
     const productos = this.productoService.getProductos()
-    const productoEnc = productos.find(p => p.id === productoId);
-    console.log(this.productoService.getProductos())
-    console.log(productos)
-    console.log(productoId)
+    const productoEnc = productos.find(p => p.id == productoId);
+    // console.log(this.productoService.getProductos())
+    // console.log(productos)
+    // console.log(`Hola soy el ${productos}`)
     return productoEnc ? productoEnc.nombre : 'Producto no encontrado';
     
   }
