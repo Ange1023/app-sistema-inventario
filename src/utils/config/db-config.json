@@ -1,0 +1,7 @@
+{
+    "user": "postgres",
+    "host": "localhost",
+    "database": "invframeworks",
+    "password": "16012004",
+    "port": 5432
+}
