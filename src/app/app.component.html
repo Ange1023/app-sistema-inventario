@@ -1,12 +1,16 @@
 
-    <nav>
-      <span>Sistema de Inventario</span>
-      <a routerLink="/productos">Productos</a>
-      <a routerLink="/sedes">Sedes</a>
-      <button class="abusqueda" (click)="toggleSearchForm()">{{ mostrarSearchForm ? 'Ocultar' : 'Mostrar' }} formulario de Búsqueda</button>
-    </nav>
-    
-<app-search-form *ngIf="mostrarSearchForm"></app-search-form>
+<nav *ngIf="isLoggedIn">
+  <span>Sistema de Inventario</span>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/productos">Productos</a>
+  <a routerLink="/sedes">Sedes</a>
+  <button class="abusqueda" (click)="toggleSearchForm()">{{ mostrarSearchForm ? 'Ocultar' : 'Mostrar' }} formulario de Búsqueda</button>
+  <button (click)="logout()">Logout</button>
+</nav>
 
 
-  <router-outlet></router-outlet>
+<!-- <h3>{{isLoggedIn}}</h3> -->
+
+<app-search-form *ngIf="mostrarSearchForm && isLoggedIn"></app-search-form>
+
+<router-outlet></router-outlet>

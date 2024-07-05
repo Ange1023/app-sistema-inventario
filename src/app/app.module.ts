@@ -16,6 +16,7 @@ import { SedeService } from './services/sede.service';
 
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { RickrollComponent } from './components/rickroll/rickroll.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RickrollComponent } from './components/rickroll/rickroll.component';
     ModalInventarioComponent,
     SearchFormComponent,
     RickrollComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
