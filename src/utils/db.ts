@@ -22,11 +22,11 @@ class dbComponent{
         }
     }
 
-    async executeQuery({query, params}: { query: string, params: [] }): Promise<Object> {
+    async executeQuery({query, params = []}: { query: string, params: [] }): Promise<Array<any>> {
         const client = await this.getConnection()
         try {
-            const queryResult = await (client as PoolClient).query(query, params)
-            return queryResult.rows
+            const { rows } = await (client as PoolClient).query(query, params)
+            return rows
         } catch (error) {
             console.log(error)
             throw new Error('No se pudo ejecutar la consulta.')

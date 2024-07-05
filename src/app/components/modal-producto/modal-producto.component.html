@@ -7,7 +7,10 @@
         <label for="marca">Marca:</label>
         <input type="text" id="marca" [(ngModel)]="form.marca" name="marca" required>
         <label for="proveedor">Proveedor:</label>
-        <input type="text" id="proveedor" [(ngModel)]="form.proveedor" name="proveedor" required>
+        <!-- <input type="text" id="proveedor" [(ngModel)]="form.proveedor" name="proveedor" required> -->
+         <select name="" id="">
+          <option value="" *ngFor="let categoria of categorias" >{{categoria}}</option>
+         </select>
         <label for="precio">Precio:</label>
         <input type="number" id="precio" [(ngModel)]="form.precio" name="precio" required min="0">
         <label for="categoria">Categoría:</label>

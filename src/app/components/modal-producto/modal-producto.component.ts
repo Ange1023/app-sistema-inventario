@@ -18,8 +18,18 @@ export class ModalProductoComponent implements OnChanges {
     precio: 0,
     categoria: ''
   };
+categorias: any;
+  
 
   constructor(private productoService: ProductoService) { }
+
+  async ngOnInit(): Promise<void> {
+    // Aquí puedes inicializar datos o llamar a métodos necesarios al cargar el componente
+    console.log('Componente ModalProducto inicializado');
+    this.categorias = await this.getCategorias()
+    // Por ejemplo, cargar categorías si es necesario
+    // this.cargarCategorias();
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['producto'] && changes['producto'].currentValue) {
@@ -77,5 +87,8 @@ export class ModalProductoComponent implements OnChanges {
   onClose() { 
     this.closed.emit(false); 
     this.showModal = false;
+  }
+  async getCategorias(): Promise<any>{
+    this.categorias = await this.productoService.getCategory()
   }
 }
