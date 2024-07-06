@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { ApiService } from '../../services/api.service';
+import { Observable, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-productos',
@@ -51,7 +52,15 @@ export class ProductosComponent implements OnInit {
   }
 
   deleteProducto(id: number): void { 
-    this.productoService.deleteProducto(id);
-    this.productos = this.productoService.getProductos();
+    this.productoService.deleteProducto(id).pipe(
+      switchMap(() => this.productoService.getProductos())
+    ).subscribe(
+      (data) => {
+        this.productos = data;
+      },
+      (error) => {
+        console.error('Error al eliminar producto', error);
+      }
+    );
   }
 }

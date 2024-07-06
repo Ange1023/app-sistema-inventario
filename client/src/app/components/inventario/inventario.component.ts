@@ -51,13 +51,13 @@ export class InventarioComponent implements OnInit {
     this.inventario = this.inventarioService.getInventario().filter(i => i.sedeId === this.sedeId);
   }
 
-  getProductName(productoId: number): string {
-    const productos = this.productoService.getProductos()
-    const productoEnc = productos.find(p => p.id == productoId);
-    // console.log(this.productoService.getProductos())
-    // console.log(productos)
-    // console.log(`Hola soy el ${productos}`)
-    return productoEnc ? productoEnc.nombre : 'Producto no encontrado';
+  // getProductName(productoId: number): string {
+  //   const productos = this.productoService.getProductos()
+  //   const productoEnc = productos.find(p => p.id == productoId);
+  //   // console.log(this.productoService.getProductos())
+  //   // console.log(productos)
+  //   // console.log(`Hola soy el ${productos}`)
+  //   return productoEnc ? productoEnc.nombre : 'Producto no encontrado';
     
-  }
+  // }
 }

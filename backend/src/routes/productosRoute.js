@@ -7,3 +7,4 @@ productosRouter.post('/', productosController.productosPost);
 productosRouter.get('/:id', productosController.productosGetDetail);
 productosRouter.delete('/', productosController.deleteProducto);
 productosRouter.get('/', productosController.productosGet);
+productosRouter.put('/', productosController.updateProducto)

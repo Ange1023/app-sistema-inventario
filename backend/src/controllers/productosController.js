@@ -25,7 +25,7 @@ export class productosController{
     static async deleteProducto(req, res){
         const {id} = req.body;
         const producto = await productosModel.deleteProducto(id);
-        res.status(200).json(producto);
+        return res.status(200).json(producto);
     }
 
     static async updateProducto(req, res){

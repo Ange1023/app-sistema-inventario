@@ -45,4 +45,14 @@ export class ApiService {
     const url = `${this.baseUrl}/productos`;
     return this.http.post(url, producto);
   }
+
+  updateProducto(producto: any): Observable<any>{
+    const url = `${this.baseUrl}/productos`;
+    return this.http.put(url, producto);
+  }
+
+  deleteProducto(id: number): Observable<any>{
+    const url = `${this.baseUrl}/productos/${id}`;
+    return this.http.delete(url);
+  }
 }

@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 import { InventarioService } from '../../services/inventario.service';
 import { Producto, ProductoService } from '../../services/producto.service';
 import { InventarioItem } from '../../services/inventario.service';
-
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-modal-inventario',
   templateUrl: './modal-inventario.component.html',
@@ -28,8 +28,16 @@ export class ModalInventarioComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
 
-    this.productos = this.productoService.getProductos().map(producto => {
-      return { ...producto, nombre: this.truncateText(producto.nombre, this.maxChars) };
+    
+    
+    this.productoService.getProductos().pipe(
+      map((productos: Producto[]) => {
+        return productos.map((producto: Producto) => {
+          return { ...producto, nombre: this.truncateText(producto.nombre, this.maxChars) };
+        });
+      })
+    ).subscribe((productos: Producto[]) => {
+      this.productos = productos;
     });
     if (changes['inventarioItem'] && changes['inventarioItem'].currentValue) {
       this.showModal = true;

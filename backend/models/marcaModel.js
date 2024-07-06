@@ -5,6 +5,7 @@ export class marcaModel{
         try {
             const query = 'SELECT nom_marca marca FROM marca';
             const marcas = await iDBComp.exeQuery({query, param: []})
+            // console.log(marcas)
             return marcas
         } catch (error) {
             throw new Error(error.message)

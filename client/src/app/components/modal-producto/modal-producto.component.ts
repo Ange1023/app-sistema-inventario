@@ -64,7 +64,7 @@ marcas: any;
     } else {
       this.showModal = true;
       this.form = {
-        id: this.productoService.getProductos().length + 1,
+        id: 0,
         nombre: '',
         marca: '',
         proveedor: '',

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Producto, ProductoService } from '../../services/producto.service';
 import { Sede, SedeService } from '../../services/sede.service';
 import { InventarioService, InventarioItem } from '../../services/inventario.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-form',
@@ -26,9 +27,13 @@ export class SearchFormComponent implements OnInit {
     });
   }
 
+
+  
   ngOnInit(): void {
-    this.sedes = this.sedeService.getSedes()
-    this.productos = this.productoService.getProductos();
+    this.sedes = this.sedeService.getSedes();
+    this.productoService.getProductos().subscribe((productos: Producto[]) => {
+      this.productos = productos;
+    });
   }
 
   buscarProductos() {
