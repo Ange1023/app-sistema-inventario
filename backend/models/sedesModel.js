@@ -1,5 +1,5 @@
 
-import { iDBComp } from '../`sub-sistemas/ssDispatcher.js';
+import { iDBComp } from '../`sub-sistemas/ssDispatcher.js.js';
 
 export class sedesModel{
 
@@ -16,9 +16,10 @@ export class sedesModel{
         return sede;
     }
 
-    async createSede({nombre, direccion}){
-        const query = `INSERT INTO sedes(nom_sede, direccion) VALUES($1, $2) RETURNING *`;
-        const param = [nombre, direccion];
+    async createSede({nombre, direccion, pais}){
+        const {id_pais} = await iDBComp.exeQuery({query: `SELECT id FROM paises WHERE nombre = $1`, param: [pais]});
+        const query = `INSERT INTO sedes(nom_sede, contac_sede, id_pais) VALUES($1, $2, $3) RETURNING *`;
+        const param = [nombre, direccion, id_pais];
         const sede = await this.iDBComp.exeQuery({query, param});
         return sede;
     }

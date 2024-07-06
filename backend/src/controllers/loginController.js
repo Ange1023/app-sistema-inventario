@@ -1,5 +1,5 @@
-import { iDBComp } from "../../sub-sistemas/ssDispatcher";
-import { iSessionComp } from "../../sub-sistemas/ssDispatcher";
+import { iDBComp } from "../../sub-sistemas/ssDispatcher.js";
+import { iSessionComp } from "../../sub-sistemas/ssDispatcher.js";
 import { userModel } from "../../models/userModel";
 
 export class loginController{

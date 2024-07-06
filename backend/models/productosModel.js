@@ -1,4 +1,4 @@
-import { iDBComp } from '../sub-sistemas/ssDispatcher.js';
+import { iDBComp } from '../sub-sistemas/ssDispatcher.js.js';
 
 export class productosModel{
 

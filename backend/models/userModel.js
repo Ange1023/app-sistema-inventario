@@ -1,4 +1,4 @@
-import { iDBComp } from "../sub-sistemas/ssDispatcher";
+import { iDBComp } from "../sub-sistemas/ssDispatcher.js";
 
 export class userModel{
 

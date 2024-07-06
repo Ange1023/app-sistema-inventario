@@ -10,7 +10,7 @@ export class productosController{
     }
 
     static async productosGetDetail(req, res){
-        const {id} = req.params;
+        const {id} = req.body;
         const producto = await productosModel.getProductoById(id);
         res.status(200).json(producto);
     }
@@ -21,8 +21,15 @@ export class productosController{
     }
 
     static async deleteProducto(req, res){
-        const {id} = req.params;
+        const {id} = req.body;
         const producto = await productosModel.deleteProducto(id);
         res.status(200).json(producto);
     }
+
+    static async updateProducto(req, res){
+        const {id, nombre, precio, proveedor, marca, categoria} = req.body;
+        const producto = await productosModel.updateProducto({id, nombre, precio, proveedor, marca, categoria});
+        res.status(200).json(producto);
+    }
+    
 }

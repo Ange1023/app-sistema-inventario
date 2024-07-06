@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { invDB } from '../../utils/db';
+// import { invDB } from '../../utils/db';
 
 export interface Producto {
   id: number;
