@@ -1,5 +1,5 @@
 
-import { iDBComp } from '../`sub-sistemas/ssDispatcher.js.js';
+import { iDBComp } from '../sub-sistemas/ssDispatcher.js';
 
 export class sedesModel{
 

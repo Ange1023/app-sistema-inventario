@@ -1,4 +1,4 @@
-import { sedesModel } from "../../models/sedesModel";
+import { sedesModel } from "../../models/sedesModel.js";
 
 export class sedesController{
     static async sedesGet(req, res){

@@ -1,0 +1,15 @@
+###Logear un usuario
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "Idiarj",
+    "password": "16012004"
+}
+
+
+###Ver usuario logeado
+GET http://localhost:3000/login
+
+###Cerrar sesion
+POST http://localhost:3000/logout

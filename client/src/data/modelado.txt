@@ -69,7 +69,15 @@ CREATE  TABLE "public".sedes (
 	nombre_sede          varchar    ,
 	contac_sede          varchar    ,
 	id_pais              integer DEFAULT nextval('paises_id_sede_seq1'::regclass)   ,
-	CONSTRAINT pk_sedes PRIMARY KEY ( id_sede )
+	CONSTRAINT pk_sedes PRIMARY KEY ( id_sede ),
+	CONSTRAINT fk_sedes_paises FOREIGN KEY ( id_pais ) REFERENCES "public".paises( id_pais )   
+ );
+
+CREATE  TABLE "public".usuario ( 
+	id_usuario           serial  NOT NULL  ,
+	nom_user             varchar    ,
+	pass_user            varchar    ,
+	CONSTRAINT pk_usuario PRIMARY KEY ( id_usuario )
  );
 
 CREATE  TABLE "public".producto ( 
@@ -79,7 +87,10 @@ CREATE  TABLE "public".producto (
 	id_proveedor         integer DEFAULT nextval('producto_id_proveedor_seq1'::regclass) NOT NULL  ,
 	id_categoria         integer    ,
 	id_marca             integer DEFAULT nextval('producto_id_marca_seq1'::regclass) NOT NULL  ,
-	CONSTRAINT pk_producto PRIMARY KEY ( id_producto )
+	CONSTRAINT pk_producto PRIMARY KEY ( id_producto ),
+	CONSTRAINT fk_producto_proveedor FOREIGN KEY ( id_proveedor ) REFERENCES "public".proveedor( id_proveedor )   ,
+	CONSTRAINT fk_producto_categoria FOREIGN KEY ( id_categoria ) REFERENCES "public".categoria( id_categoria )   ,
+	CONSTRAINT fk_producto_marca FOREIGN KEY ( id_marca ) REFERENCES "public".marca( id_marca )   
  );
 
 CREATE  TABLE "public".inventario ( 
@@ -88,17 +99,7 @@ CREATE  TABLE "public".inventario (
 	rpo                  integer    ,
 	id_producto          integer DEFAULT nextval('inventario_id_producto_seq1'::regclass) NOT NULL  ,
 	id_sede              integer DEFAULT nextval('inventario_id_sede_seq1'::regclass) NOT NULL  ,
-	CONSTRAINT pk_inventario PRIMARY KEY ( id_inventario )
+	CONSTRAINT pk_inventario PRIMARY KEY ( id_inventario ),
+	CONSTRAINT fk_inventario_producto FOREIGN KEY ( id_producto ) REFERENCES "public".producto( id_producto )   ,
+	CONSTRAINT fk_inventario_sedes FOREIGN KEY ( id_sede ) REFERENCES "public".sedes( id_sede )   
  );
-
-ALTER TABLE "public".inventario ADD CONSTRAINT fk_inventario_producto FOREIGN KEY ( id_producto ) REFERENCES "public".producto( id_producto );
-
-ALTER TABLE "public".inventario ADD CONSTRAINT fk_inventario_sedes FOREIGN KEY ( id_sede ) REFERENCES "public".sedes( id_sede );
-
-ALTER TABLE "public".producto ADD CONSTRAINT fk_producto_proveedor FOREIGN KEY ( id_proveedor ) REFERENCES "public".proveedor( id_proveedor );
-
-ALTER TABLE "public".producto ADD CONSTRAINT fk_producto_categoria FOREIGN KEY ( id_categoria ) REFERENCES "public".categoria( id_categoria );
-
-ALTER TABLE "public".producto ADD CONSTRAINT fk_producto_marca FOREIGN KEY ( id_marca ) REFERENCES "public".marca( id_marca );
-
-ALTER TABLE "public".sedes ADD CONSTRAINT fk_sedes_paises FOREIGN KEY ( id_pais ) REFERENCES "public".paises( id_pais );
