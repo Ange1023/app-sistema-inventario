@@ -23,13 +23,13 @@ categorias: any;
 
   constructor(private productoService: ProductoService) { }
 
-  async ngOnInit(): Promise<void> {
-    // Aquí puedes inicializar datos o llamar a métodos necesarios al cargar el componente
-    console.log('Componente ModalProducto inicializado');
-    this.categorias = await this.getCategorias()
-    // Por ejemplo, cargar categorías si es necesario
-    // this.cargarCategorias();
-  }
+  // async ngOnInit(): Promise<void> {
+  //   // Aquí puedes inicializar datos o llamar a métodos necesarios al cargar el componente
+  //   console.log('Componente ModalProducto inicializado');
+  //   this.categorias = await this.getCategorias()
+  //   // Por ejemplo, cargar categorías si es necesario
+  //   // this.cargarCategorias();
+  // }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['producto'] && changes['producto'].currentValue) {
@@ -88,7 +88,7 @@ categorias: any;
     this.closed.emit(false); 
     this.showModal = false;
   }
-  async getCategorias(): Promise<any>{
-    this.categorias = await this.productoService.getCategory()
-  }
+  // async getCategorias(): Promise<any>{
+  //   this.categorias = await this.productoService.getCategory()
+  // }
 }

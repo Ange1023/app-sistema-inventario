@@ -30,32 +30,32 @@ export class ProductoService {
   //   return productoId;
   // }
 
-  async getCategory(): Promise<Array<any>> {
-    try {
-      const result = await invDB.executeQuery({query: 'SELECT nom_categoria FROM categoria', params: []})
-      return result
-    } catch (error) {
-      throw error;
-    }
-  }
+  // async getCategory(): Promise<Array<any>> {
+  //   try {
+  //     const result = await invDB.executeQuery({query: 'SELECT nom_categoria FROM categoria', params: []})
+  //     return result
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 
-  async getMarca(): Promise<Array<any>> {
-    try {
-      const result = await invDB.executeQuery({query: 'SELECT nom_marca FROM marca', params: []})
-      return result
-    } catch (error) {
-      throw error;
-    }
-  }
+  // async getMarca(): Promise<Array<any>> {
+  //   try {
+  //     const result = await invDB.executeQuery({query: 'SELECT nom_marca FROM marca', params: []})
+  //     return result
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 
-  async getProveedor(): Promise<Array<any>> {
-    try {
-      const result = await invDB.executeQuery({query: 'SELECT nom_proveedor FROM proveedor', params: []})
-      return result
-    } catch (error) {
-      throw error;
-    }
-  }
+  // async getProveedor(): Promise<Array<any>> {
+  //   try {
+  //     const result = await invDB.executeQuery({query: 'SELECT nom_proveedor FROM proveedor', params: []})
+  //     return result
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 
   addProducto(producto: Producto): void {
     const productos = this.getProductos();
