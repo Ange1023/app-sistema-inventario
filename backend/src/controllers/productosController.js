@@ -5,8 +5,10 @@ export class productosController{
 
     static async productosPost(req, res){
         const {nombre, precio, proveedor, marca, categoria} = req.body;
+        console.log(req.body)
         const producto = await productosModel.addProductos({nombre, precio, proveedor, marca, categoria});
-        res.status(200).json(producto);
+        if(!producto) return res.status(400).json({message: 'Error al agregar producto'})
+        return res.status(200).json(producto);
     }
 
     static async productosGetDetail(req, res){

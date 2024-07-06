@@ -16,3 +16,17 @@ POST http://localhost:3000/logout
 
 ###Ver categorias
 GET http://localhost:3000/pais
+
+
+###Agregar producto
+POST http://localhost:3000/productos
+Content-Type: application/json
+
+{
+    "nombre": "Coca Cola",
+    "precio": 10,
+    "marca": "Lululemon",
+    "categoria": "Clothing",
+    "proveedor": "Proveedor1"
+}
+

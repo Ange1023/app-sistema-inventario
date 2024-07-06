@@ -19,6 +19,7 @@ export class DBComp{
 
     async exeQuery({query, param = []}){
         const client = await this.getConnection();
+        console.log(`${query}, ${param}`)
         try {
             const {rows} = await client.query(query, param);
             return rows;
