@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "username": "Idiarj",
-    "password": "16012004"
+    "password": "16012004d"
 }
 
 
@@ -15,4 +15,4 @@ GET http://localhost:3000/login
 POST http://localhost:3000/logout
 
 ###Ver categorias
-GET http://localhost:3000/categoria
+GET http://localhost:3000/pais

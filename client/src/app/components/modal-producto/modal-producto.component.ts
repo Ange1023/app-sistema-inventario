@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ProductoService, Producto } from '../../services/producto.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-modal-producto',
@@ -19,17 +20,42 @@ export class ModalProductoComponent implements OnChanges {
     categoria: ''
   };
 categorias: any;
+proveedores: any;
+marcas: any;
+
   
 
-  constructor(private productoService: ProductoService) { }
+  constructor(private productoService: ProductoService, private apiService: ApiService) { }
 
-  // async ngOnInit(): Promise<void> {
-  //   // Aquí puedes inicializar datos o llamar a métodos necesarios al cargar el componente
-  //   console.log('Componente ModalProducto inicializado');
-  //   this.categorias = await this.getCategorias()
-  //   // Por ejemplo, cargar categorías si es necesario
-  //   // this.cargarCategorias();
-  // }
+   ngOnInit(): void {
+    this.apiService.getCategorias().subscribe(
+      (data) => {
+        this.categorias = data;
+        console.log(this.categorias)
+      },
+      (error) => {
+        console.error('Error al obtener categorías', error);
+      }
+    );
+    this.apiService.getProveedores().subscribe(
+      (data) => {
+        this.proveedores = data;
+        console.log(this.proveedores)
+      },
+      (error) => {
+        console.error('Error al obtener categorías', error);
+      }
+    );
+    this.apiService.getMarcas().subscribe(
+      (data) => {
+        this.marcas = data;
+        console.log(this.marcas)
+      },
+      (error) => {
+        console.error('Error al obtener categorías', error);
+      }
+    );
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['producto'] && changes['producto'].currentValue) {

@@ -11,11 +11,16 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   login(username: string, password: string): void {
-    if (this.authService.login(username, password)) {
-      this.router.navigate(['/productos']);
-    } else {
-      alert('Login failed');
-    }
+    this.authService.login(username, password).subscribe({
+      next: (success) => {
+        console.log('Login successful');
+        this.router.navigate(['/productos']);
+      },
+      error: (error) => {
+        console.log('Login failed', error);
+        alert('Login failed');
+      }
+    });
   }
 
   

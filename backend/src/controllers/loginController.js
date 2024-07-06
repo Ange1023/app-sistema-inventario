@@ -6,6 +6,7 @@ export class loginController{
 
     static async loginUser(req, res){
         const {username, password} = req.body
+        console.log(req.body)
         if(!username || !password) return res.status(400).json({message: 'Faltan datos'});
         if(req.session && req.session.username) return res.status(400).json({message: 'Usuario ya autenticado'});
         const validUser = await userModel.verifyUser({username, password});

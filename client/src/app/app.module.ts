@@ -13,7 +13,7 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { ModalInventarioComponent } from './components/modal-inventario/modal-inventario.component';
 import { InventarioService } from './services/inventario.service';
 import { SedeService } from './services/sede.service';
-
+import { HttpClientModule } from '@angular/common/http';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { RickrollComponent } from './components/rickroll/rickroll.component';
 import { LoginComponent } from './components/login/login.component';
@@ -35,7 +35,8 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ProductoService, InventarioService, SedeService],
   bootstrap: [AppComponent]
