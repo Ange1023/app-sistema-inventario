@@ -1,7 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import { iSessionComp } from '../sub-sistemas/ssDispatcher.js';
-import { sedesRouter, productosRouter, loginRouter } from '../src/routes/rDispatcher.js';
+import {     loginRouter,
+    sedesRouter,
+    productosRouter,
+    paisRouter,
+    marcaRouter,
+    categoriaRouter,
+    proveedorRouter } from '../src/routes/rDispatcher.js';
 import cors_config from '../config/cors_config.json' assert { type: "json" };
 import { logoutController } from '../src/controllers/logoutController.js';
 const app = express();
@@ -13,6 +19,10 @@ app.post('/logout', logoutController.logoutController);
 app.use('/login', loginRouter);
 app.use('/sedes', sedesRouter);
 app.use('/productos', productosRouter);
+app.use('/pais', paisRouter);
+app.use('/marca', marcaRouter);
+app.use('/categoria', categoriaRouter);
+app.use('/proveedor', proveedorRouter);
 
 
 
