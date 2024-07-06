@@ -2,23 +2,43 @@ CREATE SCHEMA IF NOT EXISTS "public";
 
 CREATE SEQUENCE "public".inventario_id_inventario_seq AS integer START WITH 1 INCREMENT BY 1;
 
+CREATE SEQUENCE "public".inventario_id_inventario_seq1 AS integer START WITH 1 INCREMENT BY 1;
+
 CREATE SEQUENCE "public".inventario_id_producto_seq AS integer START WITH 1 INCREMENT BY 1;
+
+CREATE SEQUENCE "public".inventario_id_producto_seq1 AS integer START WITH 1 INCREMENT BY 1;
 
 CREATE SEQUENCE "public".inventario_id_sede_seq AS integer START WITH 1 INCREMENT BY 1;
 
+CREATE SEQUENCE "public".inventario_id_sede_seq1 AS integer START WITH 1 INCREMENT BY 1;
+
 CREATE SEQUENCE "public".marca_id_marca_seq AS integer START WITH 1 INCREMENT BY 1;
+
+CREATE SEQUENCE "public".marca_id_marca_seq1 AS integer START WITH 1 INCREMENT BY 1;
 
 CREATE SEQUENCE "public".paises_id_sede_seq AS integer START WITH 1 INCREMENT BY 1;
 
+CREATE SEQUENCE "public".paises_id_sede_seq1 AS integer START WITH 1 INCREMENT BY 1;
+
 CREATE SEQUENCE "public".producto_id_marca_seq AS integer START WITH 1 INCREMENT BY 1;
+
+CREATE SEQUENCE "public".producto_id_marca_seq1 AS integer START WITH 1 INCREMENT BY 1;
 
 CREATE SEQUENCE "public".producto_id_producto_seq AS integer START WITH 1 INCREMENT BY 1;
 
+CREATE SEQUENCE "public".producto_id_producto_seq1 AS integer START WITH 1 INCREMENT BY 1;
+
 CREATE SEQUENCE "public".producto_id_proveedor_seq AS integer START WITH 1 INCREMENT BY 1;
+
+CREATE SEQUENCE "public".producto_id_proveedor_seq1 AS integer START WITH 1 INCREMENT BY 1;
 
 CREATE SEQUENCE "public".proveedor_id_proveedor_seq AS integer START WITH 1 INCREMENT BY 1;
 
+CREATE SEQUENCE "public".proveedor_id_proveedor_seq1 AS integer START WITH 1 INCREMENT BY 1;
+
 CREATE SEQUENCE "public".sedes_id_sede_seq AS integer START WITH 1 INCREMENT BY 1;
+
+CREATE SEQUENCE "public".sedes_id_sede_seq1 AS integer START WITH 1 INCREMENT BY 1;
 
 CREATE  TABLE "public".categoria ( 
 	id_categoria         integer  NOT NULL  ,
@@ -27,51 +47,58 @@ CREATE  TABLE "public".categoria (
  );
 
 CREATE  TABLE "public".marca ( 
-	id_marca             serial  NOT NULL  ,
+	id_marca             integer DEFAULT nextval('marca_id_marca_seq1'::regclass) NOT NULL  ,
 	nom_marca            varchar    ,
 	CONSTRAINT pk_marca PRIMARY KEY ( id_marca )
  );
 
+CREATE  TABLE "public".paises ( 
+	id_pais              integer DEFAULT nextval('paises_id_sede_seq1'::regclass) NOT NULL  ,
+	nom_pais             varchar    ,
+	CONSTRAINT pk_paises PRIMARY KEY ( id_pais )
+ );
+
 CREATE  TABLE "public".proveedor ( 
-	id_proveedor         serial  NOT NULL  ,
+	id_proveedor         integer DEFAULT nextval('proveedor_id_proveedor_seq1'::regclass) NOT NULL  ,
 	nom_proveedor        varchar    ,
 	CONSTRAINT pk_proveedor PRIMARY KEY ( id_proveedor )
  );
 
 CREATE  TABLE "public".sedes ( 
-	id_sede              serial  NOT NULL  ,
+	id_sede              integer DEFAULT nextval('sedes_id_sede_seq1'::regclass) NOT NULL  ,
 	nombre_sede          varchar    ,
 	contac_sede          varchar    ,
+	id_pais              integer DEFAULT nextval('paises_id_sede_seq1'::regclass)   ,
 	CONSTRAINT pk_sedes PRIMARY KEY ( id_sede )
  );
 
-CREATE  TABLE "public".paises ( 
-	id_sede              serial  NOT NULL  ,
-	nom_sede             varchar    ,
-	CONSTRAINT pk_paises PRIMARY KEY ( id_sede ),
-	CONSTRAINT fk_paises_sedes FOREIGN KEY ( id_sede ) REFERENCES "public".sedes( id_sede )   
- );
-
 CREATE  TABLE "public".producto ( 
-	id_producto          serial  NOT NULL  ,
+	id_producto          integer DEFAULT nextval('producto_id_producto_seq1'::regclass) NOT NULL  ,
 	nom_producto         varchar    ,
 	precio               integer    ,
-	id_proveedor         serial  NOT NULL  ,
+	id_proveedor         integer DEFAULT nextval('producto_id_proveedor_seq1'::regclass) NOT NULL  ,
 	id_categoria         integer    ,
-	id_marca             serial  NOT NULL  ,
-	CONSTRAINT pk_producto PRIMARY KEY ( id_producto ),
-	CONSTRAINT fk_producto_proveedor FOREIGN KEY ( id_proveedor ) REFERENCES "public".proveedor( id_proveedor )   ,
-	CONSTRAINT fk_producto_categoria FOREIGN KEY ( id_categoria ) REFERENCES "public".categoria( id_categoria )   ,
-	CONSTRAINT fk_producto_marca FOREIGN KEY ( id_marca ) REFERENCES "public".marca( id_marca )   
+	id_marca             integer DEFAULT nextval('producto_id_marca_seq1'::regclass) NOT NULL  ,
+	CONSTRAINT pk_producto PRIMARY KEY ( id_producto )
  );
 
 CREATE  TABLE "public".inventario ( 
-	id_inventario        serial  NOT NULL  ,
+	id_inventario        integer DEFAULT nextval('inventario_id_inventario_seq1'::regclass) NOT NULL  ,
 	stock                integer    ,
 	rpo                  integer    ,
-	id_producto          serial  NOT NULL  ,
-	id_sede              serial  NOT NULL  ,
-	CONSTRAINT pk_inventario PRIMARY KEY ( id_inventario ),
-	CONSTRAINT fk_inventario_producto FOREIGN KEY ( id_producto ) REFERENCES "public".producto( id_producto )   ,
-	CONSTRAINT fk_inventario_sedes FOREIGN KEY ( id_sede ) REFERENCES "public".sedes( id_sede )   
+	id_producto          integer DEFAULT nextval('inventario_id_producto_seq1'::regclass) NOT NULL  ,
+	id_sede              integer DEFAULT nextval('inventario_id_sede_seq1'::regclass) NOT NULL  ,
+	CONSTRAINT pk_inventario PRIMARY KEY ( id_inventario )
  );
+
+ALTER TABLE "public".inventario ADD CONSTRAINT fk_inventario_producto FOREIGN KEY ( id_producto ) REFERENCES "public".producto( id_producto );
+
+ALTER TABLE "public".inventario ADD CONSTRAINT fk_inventario_sedes FOREIGN KEY ( id_sede ) REFERENCES "public".sedes( id_sede );
+
+ALTER TABLE "public".producto ADD CONSTRAINT fk_producto_proveedor FOREIGN KEY ( id_proveedor ) REFERENCES "public".proveedor( id_proveedor );
+
+ALTER TABLE "public".producto ADD CONSTRAINT fk_producto_categoria FOREIGN KEY ( id_categoria ) REFERENCES "public".categoria( id_categoria );
+
+ALTER TABLE "public".producto ADD CONSTRAINT fk_producto_marca FOREIGN KEY ( id_marca ) REFERENCES "public".marca( id_marca );
+
+ALTER TABLE "public".sedes ADD CONSTRAINT fk_sedes_paises FOREIGN KEY ( id_pais ) REFERENCES "public".paises( id_pais );
