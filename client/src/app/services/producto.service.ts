@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from './api.service';
+import { Observable } from 'rxjs';
 // import { invDB } from '../../utils/db';
 
 export interface Producto {
@@ -17,11 +19,12 @@ export interface Producto {
 export class ProductoService {
   private productosKey = 'productos';
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
-  getProductos(): Producto[] {
-    const productos = localStorage.getItem(this.productosKey);
-    return productos ? JSON.parse(productos) : [];
+
+  getProductos(): Observable<Producto[]> {
+    const productos = this.apiService.getProductos();
+    return productos;
   }
 
   // getProductIdByName(name: any){
@@ -57,10 +60,8 @@ export class ProductoService {
   //   }
   // }
 
-  addProducto(producto: Producto): void {
-    const productos = this.getProductos();
-    productos.push(producto);
-    localStorage.setItem(this.productosKey, JSON.stringify(productos));
+  addProducto(producto: Producto): Observable<any> {
+    return this.apiService.postProductos(producto);
   }
 
   updateProducto(updatedProducto: Producto): void {

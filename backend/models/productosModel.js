@@ -2,11 +2,14 @@ import { iDBComp } from '../sub-sistemas/ssDispatcher.js';
 
 export class productosModel{
 
-   static async getProductos(){
-        const query = `SELECT * FROM producto`;
-        const productos = await iDBComp.exeQuery({query});
-        return productos;
-    }
+static async getProductos(){
+    const query = `SELECT id_producto as id, nom_producto as nombre, precio, nom_proveedor as proveedor, nom_categoria as categoria, nom_marca as marca FROM producto pro 
+    INNER JOIN proveedor pree ON pro.id_proveedor = pree.id_proveedor
+    INNER JOIN categoria cat ON pro.id_categoria = cat.id_categoria
+    INNER JOIN marca marc ON pro.id_marca = marc.id_marca`;
+    const productos = await iDBComp.exeQuery({query});
+    return productos;
+}
 
     static async addProductos({nombre, precio, proveedor, marca, categoria}){
         console.log(proveedor, marca, categoria)

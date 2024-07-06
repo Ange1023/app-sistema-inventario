@@ -36,4 +36,13 @@ export class ApiService {
     return this.http.get(url);
   }
 
+  getProductos(): Observable<any>{
+    const url = `${this.baseUrl}/productos`;
+    return this.http.get(url);
+  }
+
+  postProductos(producto: any): Observable<any>{
+    const url = `${this.baseUrl}/productos`;
+    return this.http.post(url, producto);
+  }
 }

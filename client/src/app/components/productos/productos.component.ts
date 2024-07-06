@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-productos',
@@ -11,10 +12,18 @@ export class ProductosComponent implements OnInit {
   selectedProducto: any = null; 
   showModal = false;
 
-  constructor(private productoService: ProductoService) { }
+  constructor(private productoService: ProductoService, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.productos = this.productoService.getProductos();
+    this.apiService.getProductos().subscribe(
+      (data) => {
+        this.productos = data;
+        console.log(this.productos)
+      },
+      (error) => {
+        console.error('Error al obtener categorías', error);
+      }
+    )
   }
 
   openModal(): void {
@@ -24,7 +33,14 @@ export class ProductosComponent implements OnInit {
 
   closeModal(event: boolean): void {
     if (event) {
-      this.productos = this.productoService.getProductos();
+      this.apiService.getProductos().subscribe(
+        (data) => {
+          this.productos = data;
+        },
+        (error) => {
+          console.error('Error al obtener productos', error);
+        }
+      );
     }
     this.showModal = false; 
   }
