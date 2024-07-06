@@ -38,11 +38,15 @@ export class ApiService {
 
   getProductos(): Observable<any>{
     const url = `${this.baseUrl}/productos`;
+    console.log('en get productos')
+    console.log(url)
     return this.http.get(url);
   }
 
   postProductos(producto: any): Observable<any>{
     const url = `${this.baseUrl}/productos`;
+    console.log(url)
+    console.log(producto)
     return this.http.post(url, producto);
   }
 

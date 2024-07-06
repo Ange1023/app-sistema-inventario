@@ -28,6 +28,7 @@ export class ProductoService {
   }
 
   addProducto(producto: Producto): Observable<any> {
+    console.log('holi')
     return this.apiService.postProductos(producto);
   }
 
