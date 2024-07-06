@@ -89,9 +89,12 @@ marcas: any;
 
     if (this.isValidForm()) {
       if (this.producto) {
+        console.log('toy aki')
         this.productoService.updateProducto(this.form);
       } else {
-        this.productoService.addProducto(this.form);
+        console.log('toy aka')
+        const a = this.productoService.addProducto(this.form);
+        console.log(a)
       }
       this.closed.emit(true); 
       this.showModal = false;
@@ -108,13 +111,16 @@ marcas: any;
     }
 
     return true;
+
   }
 
   onClose() { 
     this.closed.emit(false); 
     this.showModal = false;
   }
+
   // async getCategorias(): Promise<any>{
   //   this.categorias = await this.productoService.getCategory()
   // }
+
 }

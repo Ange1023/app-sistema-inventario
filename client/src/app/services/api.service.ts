@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs'
+import { firstValueFrom, Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -43,16 +43,21 @@ export class ApiService {
     return this.http.get(url);
   }
 
-  postProductos(producto: any): Observable<any>{
-    const url = `${this.baseUrl}/productos`;
-    console.log(url)
-    console.log(producto)
-    return this.http.post(url, producto);
+  postProductos(producto: any): Promise<any>{
+    try {
+      const url = `${this.baseUrl}/productos`;
+      console.log(url)
+      console.log(producto)
+      return firstValueFrom(this.http.post(url, producto))
+    } catch (error: any) {
+      console.log(error.message)
+      return error
+    }
   }
 
-  updateProducto(producto: any): Observable<any>{
+  updateProducto(producto: any): Promise<any>{
     const url = `${this.baseUrl}/productos`;
-    return this.http.put(url, producto);
+    return firstValueFrom(this.http.put(url, producto));
   }
 
   deleteProducto(id: number): Observable<any>{

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 // import { invDB } from '../../utils/db';
 
 export interface Producto {
@@ -27,13 +27,15 @@ export class ProductoService {
     return productos;
   }
 
-  addProducto(producto: Producto): Observable<any> {
+  async addProducto(producto: Producto): Promise<any> {
     console.log('holi')
-    return this.apiService.postProductos(producto);
+    return await this.apiService.postProductos(producto);
   }
 
-  updateProducto(updatedProducto: Producto): Observable<any> {
-    return this.apiService.updateProducto(updatedProducto);
+  async updateProducto(updatedProducto: Producto): Promise<any> {
+    const a = await this.apiService.updateProducto(updatedProducto);
+    console.log(a)
+    return a
   }
 
   deleteProducto(id: number): Observable<any> {

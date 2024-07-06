@@ -25,10 +25,11 @@ static async getProductos(){
     }
 
     static async updateProducto({id, nombre, precio, proveedor, marca, categoria}){
-        const {id_proveedor} = await iDBComp.exeQuery({query: `SELECT id_proveedor FROM proveedore WHERE nom_proveedor = $1`, param: [proveedor]});
-        const {id_marca} = await iDBComp.exeQuery({query: `SELECT id_marca FROM marca WHERE nom_marca = $1`, param: [marca]});
-        const {id_categoria} = await iDBComp.exeQuery({query: `SELECT id_categoria FROM categoria WHERE nom_categoria = $1`, param: [categoria]});
-        const query = `UPDATE producto SET nom_producto = $1, precio = $2, id_proveedor = $3, id_marca = $4, id_categoria = $5 WHERE id = $6 RETURNING *`;
+        const [{id_proveedor}] = await iDBComp.exeQuery({query: `SELECT id_proveedor FROM proveedor WHERE nom_proveedor = $1`, param: [proveedor]});
+        const [{id_marca}] = await iDBComp.exeQuery({query: `SELECT id_marca FROM marca WHERE nom_marca = $1`, param: [marca]});
+        const [{id_categoria}] = await iDBComp.exeQuery({query: `SELECT id_categoria FROM categoria WHERE nom_categoria = $1`, param: [categoria]});
+        const query = `UPDATE producto SET nom_producto = $1, precio = $2, id_proveedor = $3, id_marca = $4, id_categoria = $5 WHERE id_producto = $6 RETURNING *`;
+        console.log(`id_proveedor: ${id_proveedor}, id_marca: ${id_marca}, id_categoria: ${id_categoria}`)
         const param = [nombre, precio, id_proveedor, id_marca, id_categoria, id];
         const producto = await iDBComp.exeQuery({query, param});
         return producto;

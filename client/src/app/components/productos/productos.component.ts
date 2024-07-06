@@ -27,6 +27,10 @@ export class ProductosComponent implements OnInit {
     )
   }
 
+  onSubmit(): void {
+    
+  }
+
   openModal(): void {
     this.selectedProducto = null;
     this.showModal = true;
